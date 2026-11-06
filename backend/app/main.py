@@ -1,9 +1,12 @@
 from fastapi import FastAPI
 
+from app.core.config import settings
+
 app = FastAPI(
-    title="Vently API",
+    title=settings.app_name,
     description="An open-source job application automation platform.",
-    version="0.1.0",
+    version=settings.app_version,
+    debug=settings.debug,
 )
 
 
