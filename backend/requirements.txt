@@ -7,3 +7,5 @@ httpx
 sqlalchemy
 pg8000
 alembic
+pwdlib[argon2]
+email-validator
