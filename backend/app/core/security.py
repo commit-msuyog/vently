@@ -4,6 +4,12 @@ import hashlib
 import hmac
 import secrets
 
+from datetime import datetime, timedelta, timezone
+
+import jwt
+
+from app.core.config import settings
+
 
 ITERATIONS = 600_000
 ALGORITHM = "sha256"
@@ -64,3 +70,27 @@ def verify_password(
 
     except (ValueError, TypeError):
         return False
+
+def create_access_token(user_id: int) -> str:
+    expire = datetime.now(timezone.utc) + timedelta(
+        minutes=settings.access_token_expire_minutes
+    )
+
+    payload = {
+        "sub": str(user_id),
+        "exp": expire,
+    }
+
+    return jwt.encode(
+        payload,
+        settings.secret_key,
+        algorithm=settings.algorithm,
+    )
+
+
+def decode_access_token(token: str) -> dict:
+    return jwt.decode(
+        token,
+        settings.secret_key,
+        algorithms=[settings.algorithm],
+    )
