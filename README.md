@@ -17,6 +17,12 @@ Vently aims to simplify job and internship applications through browser autofill
 
 Currently under development.
 
+## AI Assistance
+
+AI tools such as ChatGPT and Claude were used for learning,
+development assistance, debugging, and reviewing parts of the code.
+All changes are reviewed and tested by me.
+
 ## Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](docs/CONTRIBUTING.md).
